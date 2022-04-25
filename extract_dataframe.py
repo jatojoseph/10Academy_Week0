@@ -3,6 +3,8 @@ import pandas as pd
 from textblob import TextBlob
 
 def read_json(json_file: str)->list:
+    
+    
     """
     json file reader to open and read json files into a list
     Args:
@@ -38,7 +40,7 @@ class TweetDfExtractor:
         statuses_count 
         
     def find_full_text(self)->list:
-        text = 
+        return text 
        
     
     def find_sentiments(self, text)->list:
@@ -50,18 +52,17 @@ class TweetDfExtractor:
         return created_at
 
     def find_source(self)->list:
-        source = 
 
         return source
 
     def find_screen_name(self)->list:
-        screen_name = 
+       return screen_name
 
     def find_followers_count(self)->list:
-        followers_count = 
+        return followers_count
 
     def find_friends_count(self)->list:
-        friends_count = 
+        return friends_count
 
     def is_sensitive(self)->list:
         try:
@@ -70,18 +71,16 @@ class TweetDfExtractor:
             is_sensitive = None
 
         return is_sensitive
-
-    def find_favourite_count(self)->list:
         
     
     def find_retweet_count(self)->list:
-        retweet_count = 
+         return retweet_count
 
     def find_hashtags(self)->list:
-        hashtags =
+        return hashtags
 
     def find_mentions(self)->list:
-        mentions = 
+         return mentions
 
 
     def find_location(self)->list:
@@ -122,7 +121,7 @@ class TweetDfExtractor:
             df.to_csv('processed_tweet_data.csv', index=False)
             print('File Successfully Saved.!!!')
         
-        return df
+        return df 
 
                 
 if __name__ == "__main__":
