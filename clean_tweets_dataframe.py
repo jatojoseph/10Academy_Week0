@@ -1,5 +1,8 @@
+import os 
 import pandas as pd
 import extract_dataframe as ed
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 class Clean_Tweets:
     """
@@ -49,23 +52,16 @@ class Clean_Tweets:
 
         return df
 
-    
-
     def remove_non_english_tweets(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         remove non english tweets from lang
         """
-
-        
-
-        return df 
-
         df = df.drop(df[df['lang'] != 'en'].index)
 
         return df
 
 if __name__ == "__main__":
-    _, tweet_list = ed.read_json("data/Economic_Twitter_Data.json")
+    _, tweet_list = ed.read_json("/home/jay/env_twitter/10Academy0/10Academy_Week0/data/Economic_Twitter_Data.json")
     tweet = ed.TweetDfExtractor(tweet_list)
     df = tweet.get_tweet_df(True)
     final = Clean_Tweets(df)
