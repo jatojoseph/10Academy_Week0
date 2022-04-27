@@ -8,7 +8,7 @@ sys.path.append(os.path.abspath(os.path.join('../..')))
 
 #print (path)
 #'/home/jay/env_twitter/10Academy0/10Academy_Week0/home/jay/env_twitter/10Academy0/10Academy_Week0/'
-from extract_dataframe.py import read_json
+from extract_dataframe import read_json
 from extract_dataframe import TweetDfExtractor
 
 
