@@ -3,7 +3,9 @@ import pandas as pd
 from textblob import TextBlob
 import zipfile, os
 
-working_directory = '/home/jay/env_twitter/bin/10Academy_Week0/data'
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+working_directory = '/home/jay/env_twitter/10Academy0/10Academy_Week0/data'
 os.chdir(working_directory)
 
 for file in os.listdir(working_directory):  
