@@ -1,4 +1,6 @@
 import pandas as pd
+import extract_dataframe as ed
+
 class Clean_Tweets:
     """
     The PEP8 Standard AMAZING!!!
@@ -21,16 +23,17 @@ class Clean_Tweets:
         """
         drop duplicate rows
         """
-        
-        df = df.drop_duplicates(keep=False)
-        
+
+
+        df.drop_duplicates(inplace=True)
         return df
+
     def convert_to_datetime(self, df:pd.DataFrame)->pd.DataFrame:
         """
         convert column to datetime
         """
-        df['created_at'] = pd.to_datetime(df['created_at'])
-
+        df["created_at"] = pd.to_datetime(df["created_at"])
+        
         return df
     
     def convert_to_numbers(self, df:pd.DataFrame)->pd.DataFrame:
@@ -38,17 +41,31 @@ class Clean_Tweets:
         convert columns like polarity, subjectivity, retweet_count
         favorite_count etc to numbers
         """
-        df['polarity'] = pd.to_numeric(df['polarity'])
-        df['subjectivity'] = pd.to_numeric(df['subjectivity'])
-        df['retweet_count'] = pd.to_numeric(df['retweet_count'])
-        df['favorite_count'] = pd.to_numeric(df['favorite_count'])
-        
+        df['polarity'] = pd.to_numeric(df["polarity"])
+        df["subjectivity"] = pd.to_numeric(df["subjectivity"])
+        df["retweet_count"] = pd.to_numeric(df["retweet_count"])
+        df["favorite_count"] = pd.to_numeric(df["favorite_count"])
+#       
+
         return df
+
     
-    def remove_non_english_tweets(self, df:pd.DataFrame)->pd.DataFrame:
+
+    def remove_non_english_tweets(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         remove non english tweets from lang
         """
+
         
-        if df['lang'] == 'en':
-            return df
+
+        return df 
+
+        df = df.drop(df[df['lang'] != 'en'].index)
+
+        return df
+
+if __name__ == "__main__":
+    _, tweet_list = ed.read_json("data/Economic_Twitter_Data.json")
+    tweet = ed.TweetDfExtractor(tweet_list)
+    df = tweet.get_tweet_df(True)
+    final = Clean_Tweets(df)
